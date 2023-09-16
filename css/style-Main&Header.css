@@ -1,0 +1,300 @@
+/* Inicialização de variaveis */
+:root {
+    --background-color: #0f0f0f;
+    --options-icon-fill-color: white;
+    --text-color-oblique: #a7a7a7;
+    --selection-highlight-color: rgba(255, 255, 255, 0.1);
+    --searchbox-border-color: hsl(0, 0%, 18.82%);
+    --searchbox-text-color: hsla(0, 100%, 100%, 0.88);
+    --searchbox-background: hsl(0, 0%, 7%);
+    --voice-search-background: #272727;
+    --voice-search-background-hover: #3d3d3d;
+}
+
+.ligth {
+    --background-color: #f1f1f1;
+    --options-icon-fill-color: black;
+}
+
+@font-face {
+    font-family: "Youtube Sans";
+    src: url("../fonts/youtube-sans-cufonfonts/.otf") format("opentype"), ;
+}
+
+/* Inicio css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* border: 1px dashed white; */
+    scroll-behavior: smooth;
+    font-family: "Youtube Sans", Arial, sans-serif;
+    color: white;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+/* Header */
+header {
+    height: 56px;
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    position: absolute;
+}
+
+/* Header esquerda */
+.left-mesh {
+    width: 169px;
+    display: flex;
+    align-items: center;
+}
+
+.options-button {
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.options-button:hover {
+    background-color: var(--selection-highlight-color);
+    cursor: pointer;
+}
+
+.options-button svg {
+    fill: var(--options-icon-fill-color);
+    height: 100%;
+}
+
+.youtube-icon {
+    width: 90px;
+    padding: 18px 14px 18px 16px;
+}
+
+.youtube-icon a {
+    text-decoration: none;
+}
+
+.youtube-icon span {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 10px;
+    height: 100%;
+
+    margin-left: 4px;
+    margin-top: -6px;
+    color: var(--text-color-oblique);
+}
+
+/* Header centro */
+.mid-mesh {
+    width: 100%;
+    max-width: 732px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-bar {
+    margin: 0 0 0 40px;
+    padding: 0 0 0 4px;
+
+    flex: 1;
+    flex-basis: 0.000000001px;
+}
+
+.search-input {
+    margin: 0 0 0 32px;
+    display: flex;
+
+    flex: 1;
+    flex-basis: 0.000000001px;
+}
+
+.search-input-border {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    padding: 0px 4px 0px 16px;
+
+    flex: 1;
+    flex-basis: 0.000000001px;
+
+    border-radius: 40px 0 0 40px;
+    border: 1px solid var(--searchbox-border-color);
+    background-color: var(--searchbox-background);
+}
+
+.search-bar form {
+    height: 40px;
+    position: relative;
+
+    flex: 1;
+    flex-basis: 0.000000001px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.youtube-search-icon {
+    fill: var(--options-icon-fill-color);
+    display: none;
+    align-items: center;
+
+    height: 85%;
+    aspect-ratio: 1/1;
+
+    color: var(--yt-spec-icon-inactive);
+    padding: 0px 12px 0px 0px;
+
+    animation: none;
+    transition: all 1s ease-in-out;
+}
+
+.youtube-search-icon svg {
+    height: 20px;
+    width: 20px;
+}
+
+.search-input input[type="search"] {
+    background-color: transparent;
+    position: relative;
+    color: white;
+
+    border: medium;
+    outline: none;
+
+    padding: 0px;
+    margin: 0px;
+    height: auto;
+    width: 100%;
+
+    font-family: Roboto, Noto, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.search-input input[type="search"]::placeholder {
+    font-size: 1.2em;
+    z-index: 2;
+    color: #a7a7a7;
+
+    color: var(--searchbox-text-color);
+
+    font-family: Roboto, Noto, sans-serif;
+    width: 100%;
+}
+
+.voice-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    background-color: var(--voice-search-background);
+
+    margin-left: 16px;
+    height: 40px;
+    width: 40px;
+}
+
+.voice-search:hover {
+    background-color: var(--voice-search-background-hover);
+    cursor: pointer;
+}
+
+.voice-search svg {
+    max-width: 24px;
+    max-height: 24px;
+}
+
+.search-tools {
+    display: flex;
+    align-items: center;
+    height: 24px;
+}
+
+.remove-all-search {
+    display: none;
+    position: relative;
+    right: -8px;
+
+    padding: 8px;
+    border-radius: 1000px;
+}
+
+.remove-all-search:hover {
+    background-color: #0000001d;
+}
+
+.digital-keyboard-icon {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    right: 0px;
+
+    height: 100%;
+    width: 24;
+
+    cursor: pointer;
+    padding: 0 6px;
+}
+
+.digital-keyboard-icon img {
+    object-fit: contain;
+
+}
+
+.search-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 0 40px 40px 0;
+    cursor: pointer;
+    height: 40px;
+    width: 64px;
+    margin: 0;
+
+    background-color: #222222;
+    border-top: 1px solid var(--searchbox-border-color);
+    border-bottom: 1px solid var(--searchbox-border-color);
+    border-right: 1px solid var(--searchbox-border-color);
+}
+
+.search-bar svg {
+    max-width: 24px;
+    max-height: 24px;
+}
+
+/* Mesh da direita */
+.right-mesh {
+    min-width: 225px;
+    height: 40px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.profile-picture {
+    padding: 1px 6px;
+    margin-right: 8px;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+}
+
+.profile-picture:hover {
+    cursor: pointer;
+}

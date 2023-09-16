@@ -1,0 +1,74 @@
+aside {
+    display: flex;
+    min-width: 240px;
+    height: 100%;
+
+    padding: 12px;
+    padding-top: 14px;
+}
+
+.app-guide {
+    display: flex;
+    flex-direction: row;
+}
+
+.guide-option {
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    border-radius: 10px;
+    padding: 8px 12px;
+
+    max-height: 40px;
+    width: 204px;
+}
+
+.guide-block {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 12px;
+    padding-top: 12px;
+}
+
+.guide-option:hover {
+    background-color: #272727;
+}
+
+.selected {
+    background-color: #272727;
+}
+
+.selected:hover {
+    background-color: hsla(0, 0%, 53.3%, 0.4);
+}
+
+.guide-option svg {
+    max-width: 24px;
+    max-height: 24px;
+}
+
+.guide-option img {
+    border-radius: 100px;
+}
+
+.guide-text {
+    margin-left: 24px;
+
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: 0.875em;
+    line-height: 20px;
+    font-weight: 500;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    text-align: left;
+
+    width: 132px;
+    height: 20px;
+}
+
+.margin-label {
+    margin: 20px 0 5px 12px;
+}
