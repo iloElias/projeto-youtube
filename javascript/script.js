@@ -65,5 +65,11 @@ document.getElementById("remove-all-search").addEventListener("click", function 
     }
 })
 
+function resizeDrawer() {
+    let viewportHeight = window.innerHeight;
+    console.log(viewportHeight)
+    document.getElementById("app-guide").style.maxHeight = `${viewportHeight -68}px`
+}
 
-
+document.addEventListener("resize", resizeDrawer())
+resizeDrawer()

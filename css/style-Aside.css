@@ -1,15 +1,15 @@
 aside {
     display: flex;
     min-width: 240px;
-    height: 100%;
 
     padding: 12px;
     padding-top: 14px;
+    padding-bottom: 0;
 }
 
-.app-guide {
-    display: flex;
-    flex-direction: row;
+#app-guide {
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 .guide-option {
@@ -22,6 +22,8 @@ aside {
 
     max-height: 40px;
     width: 204px;
+
+    transition: 100ms;
 }
 
 .guide-block {
@@ -32,6 +34,7 @@ aside {
 
 .guide-option:hover {
     background-color: #272727;
+    cursor: pointer;
 }
 
 .selected {
@@ -71,4 +74,20 @@ aside {
 
 .margin-label {
     margin: 20px 0 5px 12px;
+    text-decoration: none;
+
+}
+
+.linksFooter {
+    max-width: 220px;
+}
+
+.linksFooter a {
+    margin-right: 8px;
+    display: inline-block;
+    text-decoration: none;
+    color: #aaaaaa;
+    font-size: 0.775rem;
+    font-weight: 700;
+    line-height: 0.01rem;
 }
