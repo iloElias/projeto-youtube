@@ -8,7 +8,8 @@ aside {
 }
 
 #app-guide {
-    overflow-y: auto;
+    overflow: auto;
+    overflow-x: hidden;
     scrollbar-width: thin;
 }
 
