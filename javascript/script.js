@@ -65,11 +65,17 @@ document.getElementById("remove-all-search").addEventListener("click", function 
     }
 })
 
-function resizeDrawer() {
+function resizeContent() {
     let viewportHeight = window.innerHeight;
     console.log(viewportHeight)
-    document.getElementById("app-guide").style.maxHeight = `${viewportHeight -68}px`
+    document.getElementById("app-guide").style.maxHeight = `${viewportHeight - 68}px`
+    if (document.querySelector("#app-suspended-guide .guide-container")) {
+        document.querySelector("#app-suspended-guide .guide-container").style.maxHeight = `${window.innerHeight - 68}px`
+    }
 }
 
-document.addEventListener("resize", resizeDrawer())
-resizeDrawer()
+window.addEventListener("resize", function () {
+    resizeContent()
+})
+
+resizeContent()

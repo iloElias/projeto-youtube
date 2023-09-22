@@ -197,3 +197,5 @@ for (let i in personalOptionsArray) {
 
     personalOptionsContainer.innerHTML += newHtml
 }
+
+document.getElementById("app-suspended-guide").innerHTML += document.getElementById("app-guide").innerHTML

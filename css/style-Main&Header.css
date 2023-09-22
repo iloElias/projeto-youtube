@@ -25,7 +25,7 @@
     /* border: 1px dashed white; */
     scroll-behavior: smooth;
     color: white;
-        font-family: Roboto, Arial, sans-serif;
+    font-family: Roboto, Arial, sans-serif;
 }
 
 body {
@@ -180,7 +180,6 @@ header {
 
 .search-input input[type="search"]::placeholder {
     font-size: 1.2em;
-    z-index: 2;
     color: #a7a7a7;
 
     color: var(--searchbox-text-color);

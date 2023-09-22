@@ -1,7 +1,3 @@
-:root {
-    --distance-from-left: 264px;
-}
-
 main {
     width: 100%;
     max-width: 100%;
@@ -34,10 +30,10 @@ main {
 }
 
 .left-arrow-box {
-    left: var(--distance-from-left);
+    left: 264px;
     background: transparent;
     position: absolute;
-    z-index: 2020;
+    z-index: 4;
 
     display: flex;
     flex-direction: row;
@@ -48,7 +44,7 @@ main {
     right: 24px;
     background: transparent;
     position: absolute;
-    z-index: 2020;
+    z-index: 4;
 
     display: flex;
     flex-direction: row;
@@ -99,7 +95,7 @@ main {
     white-space: nowrap;
     overflow: hidden;
 
-    min-width: 100%;
+    max-width: 100%;
 }
 
 #scroll-view-bar-items {
@@ -113,6 +109,8 @@ main {
     position: relative;
     white-space: nowrap;
     overflow: hidden;
+
+    transition: 0.2s ease-in-out;
 }
 
 .scroll-view-bar-item {
