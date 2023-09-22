@@ -5,7 +5,7 @@
     --text-color-oblique: #a7a7a7;
     --selection-highlight-color: rgba(255, 255, 255, 0.1);
     --searchbox-border-color: hsl(0, 0%, 18.82%);
-    --searchbox-text-color: hsla(0, 100%, 100%, 0.88);
+    --searchbox-text-color: #728888;
     --searchbox-background: hsl(0, 0%, 7%);
     --voice-search-background: #272727;
     --voice-search-background-hover: #3d3d3d;
@@ -152,7 +152,6 @@ header {
     height: 85%;
     aspect-ratio: 1/1;
 
-    color: var(--yt-spec-icon-inactive);
     padding: 0px 12px 0px 0px;
 
     animation: none;
@@ -164,29 +163,31 @@ header {
     width: 20px;
 }
 
+#main-search-input {
+    height: 24px;
+}
+
 .search-input input[type="search"] {
     background-color: transparent;
     position: relative;
-    color: white;
+    color: hsl(0deg 0% 100% / 88%);
 
     border: medium;
     outline: none;
 
     padding: 0px;
     margin: 0px;
-    height: auto;
     width: 100%;
 
     font-family: Roboto, Noto, sans-serif;
     font-size: 14px;
     font-weight: 400;
-    line-height: 24px;
 }
 
 .search-input input[type="search"]::placeholder {
     font-size: 1.2em;
     z-index: 2;
-    color: #a7a7a7;
+    color: hsl(0deg 0% 100% / 88%);
 
     color: var(--searchbox-text-color);
 
@@ -243,16 +244,17 @@ header {
 
     right: 0px;
 
-    height: 100%;
-    width: 24;
-
     cursor: pointer;
     padding: 0 6px;
 }
 
 .digital-keyboard-icon img {
-    object-fit: contain;
+    height: 11px;
+    line-height: 0;
+    width: 19px;
+    vertical-align: middle;
 
+    filter: invert(100%);
 }
 
 .search-button {
