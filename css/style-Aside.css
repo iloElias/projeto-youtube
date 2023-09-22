@@ -1,15 +1,16 @@
 aside {
     display: flex;
     min-width: 240px;
-    height: 100%;
 
-    padding: 12px;
+    padding: 14px 12px 12px 12px;
     padding-top: 14px;
+    padding-bottom: 0;
 }
 
-.app-guide {
-    display: flex;
-    flex-direction: row;
+#app-guide {
+    overflow: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
 }
 
 .guide-option {
@@ -22,6 +23,7 @@ aside {
 
     max-height: 40px;
     width: 204px;
+
 }
 
 .guide-block {
@@ -31,7 +33,9 @@ aside {
 }
 
 .guide-option:hover {
+    transition: 100ms;
     background-color: #272727;
+    cursor: pointer;
 }
 
 .selected {
@@ -71,4 +75,92 @@ aside {
 
 .margin-label {
     margin: 20px 0 5px 12px;
+    text-decoration: none;
+
+}
+
+.linksFooter {
+    max-width: 220px;
+}
+
+.linksFooter a {
+    margin-right: 8px;
+    display: inline-block;
+    text-decoration: none;
+    color: #aaaaaa;
+    font-size: 0.775rem;
+    font-weight: 700;
+    line-height: 0.01rem;
+}
+
+#mini-app-guide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mini-guide-option {
+    padding: 16px 0 12px;
+    outline: 0;
+    width: 64px;
+
+    border-radius: 10px;
+
+    display: flexbox;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mini-guide-option:hover {
+    background-color: #272727;
+}
+
+.mini-guide-option-text {
+    max-width: 100%;
+    display: block;
+    max-height: 1.4rem;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 0.625rem;
+    font-weight: 400;
+    line-height: 1.6rem;
+}
+
+#app-suspended-guide {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#app-suspended-guide .guide-container {
+    position: relative;
+    left: 12px;
+    top: 12px;
+    overflow: scroll;
+    max-width: 228px;
+}
+
+#modal-background-fade {
+    background-color: #000000;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    transition: 0.25s;
+
+    pointer-events: none;
+}
+
+#app-suspended-guide {
+    display: flex;
+    position: absolute;
+    z-index: 15;
+    background-color: #0f0f0f;
+    min-width: 240px;
+    transition: 0.25s;
 }

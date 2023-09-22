@@ -1,0 +1,189 @@
+main {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 2px 24px 2px 24px;
+}
+
+#scroll-view-bar {
+    flex: 1;
+
+    display: inline-flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: #0f0f0f;
+
+    height: 56px;
+    min-width: 70%;
+}
+
+.arrow {
+    border-radius: 1600px;
+    height: 32px;
+    margin: 0 8px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-arrow-box {
+    left: 264px;
+    background: transparent;
+    position: absolute;
+    z-index: 4;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.right-arrow-box {
+    right: 24px;
+    background: transparent;
+    position: absolute;
+    z-index: 4;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+#left-arrow-button {
+    background-color: #0f0f0f;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-arrow-box::after {
+    background: linear-gradient(to right, #0f0f0f 20%, rgba(255, 255, 255, 0) 80%);
+    height: 50px;
+    width: 50px;
+    content: "";
+    pointer-events: none;
+}
+
+#right-arrow-button {
+    background-color: #0f0f0f;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-arrow-box::before {
+    background: linear-gradient(to left, #0f0f0f 20%, rgba(33, 33, 33, 0) 80%);
+    height: 50px;
+    width: 50px;
+    content: "";
+    pointer-events: none;
+}
+
+.arrow:hover {
+    transition: 10ms ease-in;
+    background-color: hsla(0, 0%, 53.3%, 0.4);
+    cursor: pointer;
+}
+
+.mid-view-bar {
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+
+    max-width: 100%;
+}
+
+#scroll-view-bar-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+
+    height: 56px;
+
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+
+    transition: 0.2s ease-in-out;
+}
+
+.scroll-view-bar-item {
+    background-color: #272727;
+
+    cursor: pointer;
+    font-size: 0.875rem;
+    line-height: 2rem;
+    font-weight: 400;
+
+    height: 32px;
+    min-width: 12px;
+    padding: 0 12px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+    overflow: hidden;
+    cursor: pointer;
+
+    user-select: none;
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    display: inline-flex;
+}
+
+.scroll-view-bar-item:hover {
+    transition: 200ms ease-in;
+    background-color: #3f3f3f;
+}
+
+.scroll-view-bar-item .item-text {
+    max-width: 12rem;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.selected-option-scroll-view-bar-item {
+    background-color: #f1f1f1;
+    color: #0f0f0f;
+
+    cursor: pointer;
+    font-size: 0.875rem;
+    line-height: 2rem;
+    font-weight: 400;
+
+    height: 32px;
+    min-width: 12px;
+    padding: 0 12px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+    overflow: hidden;
+    cursor: pointer;
+
+    user-select: none;
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    display: inline-flex;
+}
+
+.selected-option-scroll-view-bar-item * {
+    color: #000000;
+}
+
+.selected-option-scroll-view-bar-item:hover {
+    transition: 200ms ease-in;
+    background-color: #ffffff;
+}

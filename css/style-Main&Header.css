@@ -16,11 +16,6 @@
     --options-icon-fill-color: black;
 }
 
-@font-face {
-    font-family: "Youtube Sans";
-    src: url("../fonts/youtube-sans-cufonfonts/.otf") format("opentype"), ;
-}
-
 /* Inicio css */
 * {
     margin: 0;
@@ -29,8 +24,8 @@
 
     /* border: 1px dashed white; */
     scroll-behavior: smooth;
-    font-family: "Youtube Sans", Arial, sans-serif;
     color: white;
+    font-family: Roboto, Arial, sans-serif;
 }
 
 body {
@@ -186,8 +181,12 @@ header {
 
 .search-input input[type="search"]::placeholder {
     font-size: 1.2em;
+<<<<<<< HEAD
     z-index: 2;
     color: hsl(0deg 0% 100% / 88%);
+=======
+    color: #a7a7a7;
+>>>>>>> fdaff27e7afc16fbd8dcab23171a3fc1911f92a7
 
     color: var(--searchbox-text-color);
 
