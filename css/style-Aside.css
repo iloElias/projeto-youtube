@@ -8,9 +8,28 @@ aside {
 }
 
 #app-guide {
-    overflow: auto;
+    overflow: hidden;
     overflow-x: hidden;
     scrollbar-width: thin;
+}
+
+#app-guide:hover {
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+#app-guide::-webkit-scrollbar-thumb {
+    height: 56px;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: #a0a0a0;
+}
+
+#app-guide::-webkit-scrollbar {
+    background: transparent;
+    width: 16px;
+    display: block;
 }
 
 .guide-option {
@@ -106,7 +125,6 @@ aside {
 
     border-radius: 10px;
 
-    display: flexbox;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -141,8 +159,30 @@ aside {
     position: relative;
     left: 12px;
     top: 12px;
-    overflow: scroll;
+    overflow: hidden;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+
     max-width: 228px;
+}
+
+#app-suspended-guide .guide-container:hover {
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+#app-suspended-guide .guide-container::-webkit-scrollbar-thumb {
+    height: 56px;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: #a0a0a0;
+}
+
+#app-suspended-guide .guide-container::-webkit-scrollbar {
+    background: transparent;
+    width: 16px;
+    display: block;
 }
 
 #modal-background-fade {
