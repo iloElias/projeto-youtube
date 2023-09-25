@@ -1,0 +1,26 @@
+.main-content-viewer {
+    min-width: 100%;
+    margin-top: 25px;
+    display: flex;
+}
+
+.video-content-item {
+    max-width: 33%;
+}
+
+.video-content-info {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+}
+
+#thumbnail img {
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.video-length {
+    position: relative;
+    bottom: -25;
+}
