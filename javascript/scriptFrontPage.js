@@ -213,20 +213,20 @@ function addComponent(videoObject) {
 }
 
 function formatVisualizacoes(visualizacoes) {
-    if (visualizacoes < 40) {
+    if (visualizacoes < 1000) {
         return visualizacoes + " visualizações";
     } else if (visualizacoes < 1000000) {
         const valorFormatado = (visualizacoes / 1000).toFixed(0);
         return valorFormatado + " mil visualizações";
     } else {
         const valorFormatado = (visualizacoes / 1000000).toFixed(0);
-        return valorFormatado + " mi visualizações";
+        return valorFormatado + " milhões de visualizações";
     }
 }
 
 const videos = [];
 
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 35; i++) {
     const title = `Vídeo ${i + 1}`;
     const channelName = `Canal ${i + 1}`;
     const thumbnailUrl = `https://picsum.photos/500/300?random=${i}`;
