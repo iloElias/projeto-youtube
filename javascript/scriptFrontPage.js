@@ -213,14 +213,14 @@ function addComponent(videoObject) {
 }
 
 function formatVisualizacoes(visualizacoes) {
-    if (visualizacoes < 1000) {
+    if (visualizacoes < 40) {
         return visualizacoes + " visualizações";
     } else if (visualizacoes < 1000000) {
         const valorFormatado = (visualizacoes / 1000).toFixed(0);
         return valorFormatado + " mil visualizações";
     } else {
         const valorFormatado = (visualizacoes / 1000000).toFixed(0);
-        return valorFormatado + " milhões de visualizações";
+        return valorFormatado + " mi visualizações";
     }
 }
 
