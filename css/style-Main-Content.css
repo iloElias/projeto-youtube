@@ -1,26 +1,170 @@
 .main-content-viewer {
     min-width: 100%;
-    margin-top: 25px;
-    display: flex;
-}
+    margin-top: 24px;
 
-.video-content-item {
-    max-width: 33%;
+    max-height: 100vh;
+    overflow: scroll;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
 }
 
 .video-content-info {
     display: flex;
-    justify-content: start;
+    justify-content: end;
     flex-direction: row;
+
+    margin: 12px 0 10px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+#thumbnail {
+    display: flex;
+    justify-content: end;
+    align-items: end;
 }
 
 #thumbnail img {
-    border-radius: 10px;
+    border-radius: 12px;
     width: 100%;
     object-fit: cover;
+    aspect-ratio: 16/9;
 }
 
+
 .video-length {
+    display: inline;
+    position: absolute;
+
+    margin: 4px;
+    padding: 1px 5px 2px 4px;
+    border-radius: 4px;
+
+    text-align: center;
+
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Roboto, Arial, sans-serif;
+    background-color: #000000cb;
+}
+
+.creator-profile-picture img {
+    width: 36px;
+    height: 36px;
+    margin: 0 12px 0 0;
+    border-radius: 100%;
+}
+
+
+.video-information {
+    display: grid;
+    width: 100%;
+    max-width: 100%;
+}
+
+.video-title {
+    display: block;
+    width: 100%;
+    white-space: normal;
+    overflow: hidden;
+}
+
+.video-title .text {
+    display: -webkit-box;
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: .97rem;
+    line-height: 1.37rem;
+    font-weight: bold;
+
+    margin-bottom: 6px;
+    max-height: 44px;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.imgVerified {
+    margin: 0 4px;
     position: relative;
-    bottom: -25;
+    top: 2px;
+    display: flex;
+    width: 14px;
+    height: 14px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.first-row {
+    margin: 0 0 4px 0;
+}
+
+.ad-chanel-after::after {
+    position: relative;
+    top: 3px;
+
+    content: "·";
+    padding-inline-end: 4px;
+    padding-inline-start: 4px;
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: 1.4rem;
+    line-height: 0rem;
+    font-weight: 500;
+}
+
+.view-count::after {
+    position: relative;
+    top: 3px;
+
+    content: "·";
+    padding-inline-end: 4px;
+    padding-inline-start: 4px;
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: 1.4rem;
+    line-height: 0rem;
+    font-weight: 500;
+}
+
+.video-options {
+    position: relative;
+    right: -4px;
+}
+
+.video-options img {
+    height: 24px;
+    width: 24px;
+}
+
+.ad-watch-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 36px;
+    border-radius: 1000px;
+    background-color: #263850;
+}
+
+.ad-watch-button .text {
+    color: #3ea6ff;
+    font-size: 0.875em;
+    font-weight: bolder;
+}
+
+.ad-watch-button img {
+    margin: 0 6px;
+}
+
+.ad-watch-button:hover {
+    background-color: #515561;
+}
+
+.ad-watch-button:active {
+    background-color: #636671;
 }

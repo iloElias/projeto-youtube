@@ -1,0 +1,244 @@
+class Video {
+    title;
+    chanelName;
+    thumbnailUrl;
+    isVerified;
+    isAd;
+    description;
+    timePost;
+    videoLength;
+    chanelProfilePictureUrl;
+    adTextButton;
+
+    constructor(title, chanelName, thumbnailUrl, isVerified, isAd, description, timePost, videoLength, chanelProfilePictureUrl, adTextButton) {
+        this.title = title || '';
+        this.chanelName = chanelName || '';
+        this.thumbnailUrl = thumbnailUrl || '';
+        this.isVerified = isVerified || false;
+        this.isAd = isAd || false
+        this.description = description || '';
+        this.timePost = timePost || '';
+        this.videoLength = videoLength || 0;
+        this.chanelProfilePictureUrl = chanelProfilePictureUrl || '';
+        this.adTextButton = adTextButton || '';
+    }
+}
+
+function secondsToTime(seconds) {
+    if (isNaN(seconds) || seconds < 0) {
+        return "0:00";
+    }
+
+    const hours = Math.floor(seconds / 3600);
+    const minuts = Math.floor((seconds % 3600) / 60);
+    const secondsLeft = seconds % 60;
+
+    if (hours > 0) {
+        return `${hours}:${minuts < 10 ? '0' : ''}${minuts}:${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+    }
+    return `${minuts}:${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+}
+
+function addComponent(videoObject) {
+    const videoContentItem = document.createElement("div")
+    videoContentItem.setAttribute("class", "video-content-item")
+    // Adiciona thumbnail ao video
+
+    let thumbnail = document.createElement("div")
+    thumbnail.setAttribute("id", "thumbnail")
+    let thumbnailImg = document.createElement("img")
+    thumbnailImg.setAttribute("src", videoObject.thumbnailUrl)
+    thumbnail.appendChild(thumbnailImg)
+
+    if (videoObject.videoLength != null) {
+        let videoLength = document.createElement("div")
+        videoLength.setAttribute("class", "video-length")
+        videoLength.innerText = secondsToTime(videoObject.videoLength)
+        thumbnail.appendChild(videoLength)
+    }
+    videoContentItem.appendChild(thumbnail)
+
+    // Adiciona titulo e informações ao video
+
+    const videoContentInfo = document.createElement("div")
+    videoContentInfo.setAttribute("class", "video-content-info")
+
+    if (videoObject.chanelProfilePictureUrl != "") {
+        let chanelProfilePicture = document.createElement("div")
+        chanelProfilePicture.setAttribute("class", "creator-profile-picture")
+
+        let chanelProfilePictureImg = document.createElement("img")
+        chanelProfilePictureImg.setAttribute("src", videoObject.chanelProfilePictureUrl)
+        chanelProfilePicture.appendChild(chanelProfilePictureImg)
+
+        videoContentInfo.appendChild(chanelProfilePicture)
+    }
+
+
+    // Adiciona um barra para informações do video
+
+    let videoInformation = document.createElement("div")
+    videoInformation.setAttribute("class", "video-information")
+
+    let videoTitle = document.createElement("div")
+    videoTitle.setAttribute("class", "video-title")
+    let text4 = document.createElement("h4")
+    text4.setAttribute("class", "text")
+    text4.innerText = videoObject.title
+
+    videoTitle.appendChild(text4)
+    videoInformation.appendChild(videoTitle)
+
+
+    let extraInfo = document.createElement("div")
+    extraInfo.setAttribute("class", "extra-info")
+
+    let firstRow = document.createElement("div")
+    firstRow.setAttribute("class", "first-row")
+    let firstText5 = document.createElement("h5")
+    firstText5.setAttribute("class", "text row")
+
+
+    let secondRow = document.createElement("div")
+    secondRow.setAttribute("class", "second-row")
+    let secondText5 = document.createElement("h5")
+    secondText5.setAttribute("class", "text row")
+
+
+    if (videoObject.isAd) {
+        if (videoObject.description != "") {
+            let weakDiv = document.createElement("div")
+            weakDiv.setAttribute("class", "weak")
+            weakDiv.innerText = videoObject.description
+            firstText5.appendChild(weakDiv)
+            firstRow.appendChild(firstText5)
+
+
+            let adChanelAfter = document.createElement("div")
+            adChanelAfter.setAttribute("class", "ad-chanel-after")
+            adChanelAfter.innerText = "Anúncio"
+            secondText5.appendChild(adChanelAfter)
+
+            let weakTextDiv = document.createElement("div")
+            weakTextDiv.setAttribute("class", "weak")
+            weakTextDiv.innerText = videoObject.chanelName
+            secondText5.appendChild(weakTextDiv)
+            secondRow.appendChild(secondText5)
+
+
+            extraInfo.appendChild(firstRow)
+            extraInfo.appendChild(secondRow)
+        } else {
+            let adChanelAfter = document.createElement("div")
+            adChanelAfter.setAttribute("class", "ad-chanel-after")
+            adChanelAfter.innerText = "Anúncio"
+
+            let weakDiv = document.createElement("div")
+            weakDiv.setAttribute("class", "weak")
+            weakDiv.innerText = videoObject.chanelName
+
+            firstText5.appendChild(adChanelAfter)
+            firstText5.appendChild(weakDiv)
+            firstRow.appendChild(firstText5)
+
+            extraInfo.appendChild(firstRow)
+            secondRow.remove()
+        }
+    } else {
+        let weakDiv = document.createElement("div")
+        weakDiv.setAttribute("class", "weak")
+        weakDiv.innerText = videoObject.chanelName
+        firstText5.appendChild(weakDiv)
+
+        if (videoObject.isVerified) {
+            let verifiedImg = document.createElement("img")
+            verifiedImg.setAttribute("class", "imgVerified")
+            verifiedImg.setAttribute("src", "./images/verified.png")
+
+            firstText5.appendChild(verifiedImg)
+        }
+        firstRow.appendChild(firstText5)
+
+        let viewCounts = document.createElement("div")
+        viewCounts.setAttribute("class", "weak view-count")
+        viewCounts.innerText = videoObject.description
+
+        let timePost = document.createElement("div")
+        timePost.setAttribute("class", "weak")
+        timePost.innerText = videoObject.timePost
+
+        secondText5.appendChild(viewCounts)
+        secondText5.appendChild(timePost)
+
+        secondRow.appendChild(secondText5)
+
+        extraInfo.appendChild(firstRow)
+        extraInfo.appendChild(secondRow)
+    }
+    videoInformation.appendChild(extraInfo)
+
+    videoContentInfo.appendChild(videoInformation)
+
+    let videoOption = document.createElement("div")
+    videoOption.setAttribute("class", "video-option")
+
+    let imgOption = document.createElement("img")
+    imgOption.setAttribute("src", "./images/options.png")
+
+    videoOption.appendChild(imgOption)
+
+
+    videoContentItem.appendChild(videoContentInfo)
+    videoContentInfo.appendChild(videoOption)
+
+    if (videoObject.isAd) {
+        let adWatchButton = document.createElement("div")
+        adWatchButton.setAttribute("class", "ad-watch-button")
+
+        let textH5 = document.createElement("h5")
+        textH5.setAttribute("class", "text")
+        textH5.innerText = videoObject.adTextButton
+
+        let goToIcon = document.createElement("img")
+        goToIcon.setAttribute("src", "./images/goToIcon.png")
+
+        adWatchButton.appendChild(textH5)
+        adWatchButton.appendChild(goToIcon)
+
+        videoContentItem.appendChild(adWatchButton)
+        console.log(videoObject.adTextButton)
+    }
+
+
+    document.getElementById("main-content-viewer").appendChild(videoContentItem)
+}
+
+let newVideo = new Video("Nosso acervo de anime tem tudo o que você quer, de clássicos imortais às estreias da vez.", "Crunchyroll Ads Team", "https://i3.ytimg.com/vi/09a_hafmT3A/0.jpg", false, true, "", "A 5 Dias atras", 5321, "https://yt3.ggpht.com/ytc/APkrFKbKLZi2nOXygzWLq9UpAqUhZJcoznSxc7BlZQ_3=s68-c-k-c0x00ffffff-no-rj", "Assista")
+
+addComponent(newVideo)
+
+let newVideo2 = new Video("mineirinho 2: a reviel que eu não queria fazer", "GEMAPLYS", "https://i.ytimg.com/vi/A4gJ-0y8itw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA0g2E0iy7Kc28WI-mbIC5gf3mRSg", true, false, "394 mil visualizações", "há 19 horas", 5604, "https://yt3.ggpht.com/ytc/APkrFKaWEZ2Nzs1SOuwdNmsHmVSf99QRiIt9WGZ8l1ZpoA=s68-c-k-c0x00ffffff-no-rj")
+
+addComponent(newVideo2)
+
+const videos = [];
+
+for (let i = 0; i < 50; i++) {
+    const title = `Vídeo ${i + 1}`;
+    const channelName = `Canal ${i + 1}`;
+    const thumbnailUrl = `https://picsum.photos/500/300?random=${i}`;
+    const isVerified = Math.random() > 0.5;
+    const isAd = Math.random() > 0.8;
+    const description = `Descrição do vídeo ${i + 1}`;
+    const timePost = new Date(Date.now() - Math.floor(Math.random() * 1000000));
+    const videoLength = Math.floor(Math.random() * 10000);
+    const channelProfilePictureUrl = `https://picsum.photos/200/200?random=${i}`;
+    const adTextButton = `Anuncie`;
+
+    const video = new Video(title, channelName, thumbnailUrl, isVerified, isAd, description, timePost, videoLength, channelProfilePictureUrl, adTextButton);
+    videos.push(video);
+}
+
+for (let i in videos) {
+    addComponent(videos[i])
+}

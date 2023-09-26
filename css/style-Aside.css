@@ -150,6 +150,7 @@ aside {
 }
 
 #app-suspended-guide {
+    position: fixed;
     display: flex;
     flex-direction: column;
     height: 100%;
