@@ -206,36 +206,63 @@ function addComponent(videoObject) {
         adWatchButton.appendChild(goToIcon)
 
         videoContentItem.appendChild(adWatchButton)
-        console.log(videoObject.adTextButton)
     }
 
 
     document.getElementById("main-content-viewer").appendChild(videoContentItem)
 }
 
-let newVideo = new Video("Nosso acervo de anime tem tudo o que você quer, de clássicos imortais às estreias da vez.", "Crunchyroll Ads Team", "https://i3.ytimg.com/vi/09a_hafmT3A/0.jpg", false, true, "", "A 5 Dias atras", 5321, "https://yt3.ggpht.com/ytc/APkrFKbKLZi2nOXygzWLq9UpAqUhZJcoznSxc7BlZQ_3=s68-c-k-c0x00ffffff-no-rj", "Assista")
-
-addComponent(newVideo)
-
-let newVideo2 = new Video("mineirinho 2: a reviel que eu não queria fazer", "GEMAPLYS", "https://i.ytimg.com/vi/A4gJ-0y8itw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA0g2E0iy7Kc28WI-mbIC5gf3mRSg", true, false, "394 mil visualizações", "há 19 horas", 5604, "https://yt3.ggpht.com/ytc/APkrFKaWEZ2Nzs1SOuwdNmsHmVSf99QRiIt9WGZ8l1ZpoA=s68-c-k-c0x00ffffff-no-rj")
-
-addComponent(newVideo2)
+function formatVisualizacoes(visualizacoes) {
+    if (visualizacoes < 1000) {
+        return visualizacoes + " visualizações";
+    } else if (visualizacoes < 1000000) {
+        const valorFormatado = (visualizacoes / 1000).toFixed(0);
+        return valorFormatado + " mil visualizações";
+    } else {
+        const valorFormatado = (visualizacoes / 1000000).toFixed(0);
+        return valorFormatado + " milhões de visualizações";
+    }
+}
 
 const videos = [];
 
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 1000; i++) {
     const title = `Vídeo ${i + 1}`;
     const channelName = `Canal ${i + 1}`;
     const thumbnailUrl = `https://picsum.photos/500/300?random=${i}`;
     const isVerified = Math.random() > 0.5;
     const isAd = Math.random() > 0.8;
-    const description = `Descrição do vídeo ${i + 1}`;
+    let description = `Descrição do vídeo ${i + 1}`;
     const timePost = new Date(Date.now() - Math.floor(Math.random() * 1000000));
-    const videoLength = Math.floor(Math.random() * 10000);
+    const videoLength = Math.floor(Math.random() * 1000);
     const channelProfilePictureUrl = `https://picsum.photos/200/200?random=${i}`;
     const adTextButton = `Anuncie`;
 
-    const video = new Video(title, channelName, thumbnailUrl, isVerified, isAd, description, timePost, videoLength, channelProfilePictureUrl, adTextButton);
+    if (isAd) {
+        description = '';
+    } else {
+        const views = Math.floor(Math.random() * 4000000);
+        description = formatVisualizacoes(views);
+    }
+
+    const now = new Date();
+    const diff = now - timePost;
+    const years = Math.floor(diff / (31556926 * 1000));
+    const months = Math.floor(diff / (2629743.83 * 1000));
+    const days = Math.floor(diff / (86400 * 1000));
+    const hours = Math.floor(diff / (3600 * 1000));
+    const minutes = Math.floor(diff / (60 * 1000));
+
+    // Define o valor do campo timePost
+    const formattedTimePost = `há ${years > 0 ? `${years} anos` :
+        months > 0 ? `${months} meses` :
+            days > 0 ? `${days} dias` :
+                hours > 0 ? `${hours} horas` :
+                    minutes > 0 ? `${minutes} minutos` :
+                        'agora'
+        }`;
+
+    const video = new Video(title, channelName, thumbnailUrl, isVerified, isAd, description, formattedTimePost, videoLength, channelProfilePictureUrl, adTextButton);
     videos.push(video);
 }
 

@@ -37,7 +37,6 @@
 
 body {
     background-color: var(--background-color);
-    overflow: hidden;
 }
 
 /* Header */
@@ -50,7 +49,10 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    position: absolute;
+    position: fixed;
+    z-index: 4;
+
+    background-color: var(--background-color);
 }
 
 /* Header esquerda */

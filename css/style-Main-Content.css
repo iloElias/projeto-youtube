@@ -1,9 +1,5 @@
 .main-content-viewer {
-    min-width: 100%;
-    margin-top: 24px;
-
-    max-height: 100vh;
-    overflow: scroll;
+    margin-top: 80px;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -19,21 +15,31 @@
     display: flex;
     justify-content: space-between;
     max-width: 100%;
+
 }
 
 #thumbnail {
+    border-radius: 12px;
     display: flex;
     justify-content: end;
     align-items: end;
+
+    background-color: rgb(56, 56, 56);
+    color: rgb(56, 56, 56);
+    border: rgb(56, 56, 56);
 }
 
 #thumbnail img {
     border-radius: 12px;
+
+    background-color: rgb(56, 56, 56);
+    color: rgb(56, 56, 56);
+    border: rgb(56, 56, 56);
+
     width: 100%;
     object-fit: cover;
     aspect-ratio: 16/9;
 }
-
 
 .video-length {
     display: inline;
