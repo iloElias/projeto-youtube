@@ -78,6 +78,7 @@ mainMenuButton.addEventListener("click", function () {
     } else {
         hideMainMenu()
     }
+    firstContentRow.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
 })
 
 document.getElementById("suspended-guide-bar-button").addEventListener("click", function () {

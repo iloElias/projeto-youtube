@@ -39,7 +39,7 @@ function secondsToTime(seconds) {
     return `${minuts}:${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
 }
 
-function addComponent(videoObject) {
+function addComponent(videoObject, HTMLElement) {
     const videoContentItem = document.createElement("div")
     videoContentItem.setAttribute("class", "video-content-item")
     // Adiciona thumbnail ao video
@@ -183,7 +183,11 @@ function addComponent(videoObject) {
     videoContentInfo.appendChild(videoInformation)
 
     let videoOption = document.createElement("div")
-    videoOption.setAttribute("class", "video-option")
+    if (videoObject.isAd) {
+        videoOption.setAttribute("class", "video-option ad-video-options")
+    } else {
+        videoOption.setAttribute("class", "video-option")
+    }
 
     let imgOption = document.createElement("img")
     imgOption.setAttribute("src", "./images/options.png")
@@ -212,7 +216,7 @@ function addComponent(videoObject) {
     }
 
 
-    document.getElementById("main-content-viewer").appendChild(videoContentItem)
+    HTMLElement.appendChild(videoContentItem)
 }
 
 function formatVisualizacoes(visualizacoes) {
@@ -227,20 +231,19 @@ function formatVisualizacoes(visualizacoes) {
     }
 }
 
-let videos = [];
 
-for (let i = 0; i < 35; i++) {
+function generateVideoContent(index) {
     const channelName = generateRandonName();
-    const thumbnailUrl = `https://picsum.photos/500/300?random=${i}`;
+    const thumbnailUrl = `https://picsum.photos/500/300?random=${index}`;
     const isVerified = Math.random() > 0.5;
     const isAd = Math.random() > 0.85;
     const title = generateTitle()
-    let description = `Descrição do vídeo ${i + 1}`;
     const timePost = new Date(Date.now() - Math.floor(Math.random() * 450000000));
     const videoLength = Math.floor(Math.random() * 1000);
-    const channelProfilePictureUrl = `https://picsum.photos/200/200?random=${i}`;
+    const channelProfilePictureUrl = `https://picsum.photos/200/200?random=${index}`;
     const adTextButton = `Anuncie`;
 
+    let description
     if (isAd) {
         description = '';
     } else {
@@ -265,22 +268,59 @@ for (let i = 0; i < 35; i++) {
                         'agora'
         }`;
 
-    const video = new Video(title, channelName, thumbnailUrl, isVerified, isAd, description, formattedTimePost, videoLength, channelProfilePictureUrl, adTextButton);
-    videos.push(video);
+    return new Video(title, channelName, thumbnailUrl, isVerified, isAd, description, formattedTimePost, videoLength, channelProfilePictureUrl, adTextButton);
+
+}
+let firstRowVideos = [];
+let firstRowShorts = [];
+let secondRowVideos = [];
+let secondRowShorts = [];
+
+
+for (let i = 0; i < 40; i++) {
+    firstRowVideos.push(generateVideoContent(i));
 }
 
-for (let i in videos) {
-    addComponent(videos[i])
+for (let i = 0; i < 20; i++) {
+    secondRowVideos.push(generateVideoContent(i));
 }
 
-let sizeX = mainContentViewer.offsetWidth
-let offsetSizeX = 400
+
+let firstContentRow = document.getElementById("first-content-row")
+let secondContentRow = document.getElementById("second-content-row")
+
+let firstContentShortsRow = document.getElementById("first-shorts-content-row")
+let secondContentShortsRow = document.getElementById("second-shorts-content-row")
+
+let offsetSizeX = 380
+
+function refreshContents() {
+    let sizeX = firstContentRow.offsetWidth
+
+    firstContentRow.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
+    secondContentRow.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
+
+    for (let i in firstRowVideos) {
+        if (i < (sizeX / offsetSizeX).toFixed(0) * 2) {
+            addComponent(firstRowVideos[i], firstContentRow)
+        }
+    }
+
+    for (let i in firstRowVideos) {
+        if (i < (sizeX / offsetSizeX).toFixed(0) * 1) {
+            addComponent(firstRowVideos[i], secondContentRow)
+        }
+    }
+}
 
 window.addEventListener("resize", function () {
-    console.log("Teste tamanho")
+    firstContentRow.innerHTML = ''
+    secondContentRow.innerHTML = ''
+    firstContentShortsRow.innerHTML = ''
+    secondContentShortsRow.innerHTML = ''
 
-    sizeX = mainContentViewer.offsetWidth
-    mainContentViewer.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
+    refreshContents()
 })
 
-mainContentViewer.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
+
+refreshContents()
