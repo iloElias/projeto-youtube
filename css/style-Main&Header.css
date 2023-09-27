@@ -37,6 +37,22 @@
 
 body {
     background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 56px;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: #ffffff;
+}
+
+body::-webkit-scrollbar {
+    background: transparent;
+    background-color: #ffffff;
+    width: 0;
+    display: block;
 }
 
 /* Header */

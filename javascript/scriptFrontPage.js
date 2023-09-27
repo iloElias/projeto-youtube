@@ -227,7 +227,7 @@ function formatVisualizacoes(visualizacoes) {
     }
 }
 
-const videos = [];
+let videos = [];
 
 for (let i = 0; i < 35; i++) {
     const channelName = generateRandonName();
