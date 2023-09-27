@@ -84,6 +84,7 @@ function addComponent(videoObject) {
     videoTitle.setAttribute("class", "video-title")
     let text4 = document.createElement("h4")
     text4.setAttribute("class", "text")
+    text4.setAttribute("title", videoObject.title)
     text4.innerText = videoObject.title
 
     videoTitle.appendChild(text4)
@@ -120,7 +121,7 @@ function addComponent(videoObject) {
             secondText5.appendChild(adChanelAfter)
 
             let weakTextDiv = document.createElement("div")
-            weakTextDiv.setAttribute("class", "weak")
+            weakTextDiv.setAttribute("class", "weak point-link")
             weakTextDiv.innerText = videoObject.chanelName
             secondText5.appendChild(weakTextDiv)
             secondRow.appendChild(secondText5)
@@ -134,7 +135,7 @@ function addComponent(videoObject) {
             adChanelAfter.innerText = "Anúncio"
 
             let weakDiv = document.createElement("div")
-            weakDiv.setAttribute("class", "weak")
+            weakDiv.setAttribute("class", "weak point-link")
             weakDiv.innerText = videoObject.chanelName
 
             firstText5.appendChild(adChanelAfter)
@@ -146,8 +147,10 @@ function addComponent(videoObject) {
         }
     } else {
         let weakDiv = document.createElement("div")
-        weakDiv.setAttribute("class", "weak")
+        weakDiv.setAttribute("class", "weak point-link")
+        weakDiv.setAttribute("title", videoObject.chanelName)
         weakDiv.innerText = videoObject.chanelName
+
         firstText5.appendChild(weakDiv)
 
         if (videoObject.isVerified) {
@@ -220,20 +223,20 @@ function formatVisualizacoes(visualizacoes) {
         return valorFormatado + " mil visualizações";
     } else {
         const valorFormatado = (visualizacoes / 1000000).toFixed(0);
-        return valorFormatado + " milhões de visualizações";
+        return valorFormatado + " mi de visualizações";
     }
 }
 
 const videos = [];
 
 for (let i = 0; i < 35; i++) {
-    const title = `Vídeo ${i + 1}`;
-    const channelName = `Canal ${i + 1}`;
+    const channelName = generateRandonName();
     const thumbnailUrl = `https://picsum.photos/500/300?random=${i}`;
     const isVerified = Math.random() > 0.5;
-    const isAd = Math.random() > 0.8;
+    const isAd = Math.random() > 0.85;
+    const title = generateTitle()
     let description = `Descrição do vídeo ${i + 1}`;
-    const timePost = new Date(Date.now() - Math.floor(Math.random() * 1000000));
+    const timePost = new Date(Date.now() - Math.floor(Math.random() * 450000000));
     const videoLength = Math.floor(Math.random() * 1000);
     const channelProfilePictureUrl = `https://picsum.photos/200/200?random=${i}`;
     const adTextButton = `Anuncie`;
@@ -241,7 +244,7 @@ for (let i = 0; i < 35; i++) {
     if (isAd) {
         description = '';
     } else {
-        const views = Math.floor(Math.random() * 4000000);
+        const views = Math.floor(Math.random() * 2500000);
         description = formatVisualizacoes(views);
     }
 
@@ -254,11 +257,11 @@ for (let i = 0; i < 35; i++) {
     const minutes = Math.floor(diff / (60 * 1000));
 
     // Define o valor do campo timePost
-    const formattedTimePost = `há ${years > 0 ? `${years} anos` :
-        months > 0 ? `${months} meses` :
-            days > 0 ? `${days} dias` :
-                hours > 0 ? `${hours} horas` :
-                    minutes > 0 ? `${minutes} minutos` :
+    const formattedTimePost = `${years > 0 ? `há ${years} anos` :
+        months > 0 ? `há ${months} meses` :
+            days > 0 ? `há ${days} dias` :
+                hours > 0 ? `há ${hours} horas` :
+                    minutes > 0 ? `há ${minutes} minutos` :
                         'agora'
         }`;
 
@@ -269,3 +272,15 @@ for (let i = 0; i < 35; i++) {
 for (let i in videos) {
     addComponent(videos[i])
 }
+
+let sizeX = mainContentViewer.offsetWidth
+let offsetSizeX = 400
+
+window.addEventListener("resize", function () {
+    console.log("Teste tamanho")
+
+    sizeX = mainContentViewer.offsetWidth
+    mainContentViewer.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
+})
+
+mainContentViewer.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
