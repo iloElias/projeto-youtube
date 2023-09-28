@@ -192,3 +192,94 @@
     color: white;
     cursor: pointer;
 }
+
+
+.shorts-thumbnail {
+    border-radius: 12px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+
+    margin: 0 0 10px 0;
+
+    background-color: rgb(56, 56, 56);
+    color: rgb(56, 56, 56);
+    border: rgb(56, 56, 56);
+}
+
+.shorts-thumbnail img {
+    border-radius: 12px;
+
+    background-color: rgb(56, 56, 56);
+    color: rgb(56, 56, 56);
+    border: rgb(56, 56, 56);
+
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 9/16;
+}
+
+.main-shorts-viewer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.shorts-indicator {
+    display: flex;
+    align-items: center;
+
+    flex-direction: row;
+    margin: 25px 0;
+}
+
+.close-bnt {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.close-bnt .bnt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    fill: currentcolor;
+    border-radius: 100rem;
+}
+
+.close-bnt .bnt:hover {
+    background-color: #3f3f3f;
+}
+
+.close-bnt .bnt:active {
+    background-color: #535353;
+}
+
+.mostrar-mais-bnt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 40px;
+    width: 100%;
+    margin: 12px 0 2px 0;
+}
+
+.mostrar-mais-bnt:hover {
+    background-color: #3f3f3f;
+}
+
+.mostrar-mais-bnt:active {
+    background-color: #535353;
+}
+
+.hr-divisoria {
+    background-color: #3f3f3f;
+    border: 2px solid #3f3f3f;
+}
+
+#second-content-row {
+    margin-top: 50px;
+}

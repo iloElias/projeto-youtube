@@ -219,6 +219,64 @@ function addComponent(videoObject, HTMLElement) {
     HTMLElement.appendChild(videoContentItem)
 }
 
+function addShortsComponent(videoObject, HTMLElement) {
+    let shortContent = document.createElement("div")
+    shortContent.setAttribute("class", "shorts-content")
+
+    let thumbDiv = document.createElement("div")
+    thumbDiv.setAttribute("class", "shorts-thumbnail")
+    let thumbnailImg = document.createElement("img")
+    thumbnailImg.setAttribute("src", videoObject.thumbnailUrl)
+
+    thumbDiv.appendChild(thumbnailImg)
+    shortContent.appendChild(thumbDiv)
+
+
+    let videoContentInfo = document.createElement("div")
+    videoContentInfo.setAttribute("class", "video-content-info")
+
+    let videoInformation = document.createElement("div")
+    videoInformation.setAttribute("class", "video-information")
+
+    let videoTitle = document.createElement("div")
+    videoTitle.setAttribute("class", "video-title")
+
+    let titleText = document.createElement("h4")
+    titleText.setAttribute("class", "text")
+    titleText.innerText = videoObject.title
+
+    videoTitle.appendChild(titleText)
+    videoInformation.appendChild(videoTitle)
+
+
+    let videoViewCount = document.createElement("div")
+    videoViewCount.setAttribute("class", "text row")
+
+    let textH5 = document.createElement("h5")
+    textH5.setAttribute("class", "text row")
+
+    let divText = document.createElement("div")
+    divText.setAttribute("class", "weak")
+    divText.innerText = videoObject.description
+
+    textH5.appendChild(divText)
+    videoViewCount.appendChild(textH5)
+    videoInformation.appendChild(videoViewCount)
+    videoContentInfo.appendChild(videoInformation)
+
+    let optionButton = document.createElement("div")
+    optionButton.setAttribute("class", "video-option")
+
+    let optionImg = document.createElement("img")
+    optionImg.setAttribute("src", "./images/options.png")
+    optionButton.appendChild(optionImg)
+    videoInformation.appendChild(optionButton)
+
+    shortContent.appendChild(videoContentInfo)
+
+    HTMLElement.appendChild(shortContent)
+}
+
 function formatVisualizacoes(visualizacoes) {
     if (visualizacoes < 1000) {
         return visualizacoes + " visualizações";
@@ -269,36 +327,73 @@ function generateVideoContent(index) {
         }`;
 
     return new Video(title, channelName, thumbnailUrl, isVerified, isAd, description, formattedTimePost, videoLength, channelProfilePictureUrl, adTextButton);
-
 }
+
+function generateShortsContent(index) {
+    const channelName = generateRandonName();
+    const thumbnailUrl = `https://picsum.photos/500/700?random=${index}`;
+
+    let description = formatVisualizacoes(Math.floor(Math.random() * 2500000));
+
+    return new Video(generateTitle(), channelName, thumbnailUrl, false, false, description, "", null, "", "");
+}
+
 let firstRowVideos = [];
 let firstRowShorts = [];
 let secondRowVideos = [];
 let secondRowShorts = [];
+let lastRowVideos = [];
 
-
+let randIndex = 0
 for (let i = 0; i < 40; i++) {
-    firstRowVideos.push(generateVideoContent(i));
+    firstRowVideos.push(generateVideoContent(randIndex));
+    randIndex++;
 }
 
 for (let i = 0; i < 20; i++) {
-    secondRowVideos.push(generateVideoContent(i));
+    secondRowVideos.push(generateVideoContent(randIndex));
+    randIndex++;
 }
+
+for (let i = 0; i < 60; i++) {
+    lastRowVideos.push(generateVideoContent(randIndex));
+    randIndex++;
+}
+
+for (let i = 0; i < 15; i++) {
+    firstRowShorts.push(generateShortsContent(randIndex))
+    randIndex++;
+}
+
+for (let i = 0; i < 15; i++) {
+    secondRowShorts.push(generateShortsContent(randIndex))
+    randIndex++;
+}
+
 
 
 let firstContentRow = document.getElementById("first-content-row")
 let secondContentRow = document.getElementById("second-content-row")
+let lastContentRow = document.getElementById("last-content-row")
 
 let firstContentShortsRow = document.getElementById("first-shorts-content-row")
 let secondContentShortsRow = document.getElementById("second-shorts-content-row")
 
+
 let offsetSizeX = 380
+let offsetSizeXShorts = 230
 
 function refreshContents() {
     let sizeX = firstContentRow.offsetWidth
 
     firstContentRow.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
     secondContentRow.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
+    lastContentRow.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
+
+    firstContentShortsRow.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeXShorts).toFixed(0)}, ${1}fr)`
+    secondContentShortsRow.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeXShorts).toFixed(0)}, ${1}fr)`
+
+
 
     for (let i in firstRowVideos) {
         if (i < (sizeX / offsetSizeX).toFixed(0) * 2) {
@@ -306,9 +401,27 @@ function refreshContents() {
         }
     }
 
-    for (let i in firstRowVideos) {
+    for (let i in secondRowVideos) {
         if (i < (sizeX / offsetSizeX).toFixed(0) * 1) {
-            addComponent(firstRowVideos[i], secondContentRow)
+            addComponent(secondRowVideos[i], secondContentRow)
+        }
+    }
+
+    for (let i in lastRowVideos) {
+        if (i < (sizeX / offsetSizeX).toFixed(0) * 5) {
+            addComponent(lastRowVideos[i], lastContentRow)
+        }
+    }
+
+    for (let i in firstRowShorts) {
+        if (i < (sizeX / offsetSizeXShorts).toFixed(0) * 1) {
+            addShortsComponent(firstRowShorts[i], firstContentShortsRow)
+        }
+    }
+
+    for (let i in secondRowShorts) {
+        if (i < (sizeX / offsetSizeXShorts).toFixed(0) * 1) {
+            addShortsComponent(secondRowShorts[i], secondContentShortsRow)
         }
     }
 }
