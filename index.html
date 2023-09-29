@@ -4,11 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>YouTube</title>
+    <link rel="icon" href="https://www.youtube.com/s/desktop/c0b97319/img/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" href="https://www.youtube.com/s/desktop/c0b97319/img/favicon_48x48.png" sizes="48x48">
+    <link rel="icon" href="https://www.youtube.com/s/desktop/c0b97319/img/favicon_96x96.png" sizes="96x96">
+    <link rel="icon" href="https://www.youtube.com/s/desktop/c0b97319/img/favicon_144x144.png" sizes="144x144">
     <link rel="stylesheet" href="../css/style-Main&Header.css">
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/style-Aside.css">
     <link rel="stylesheet" href="../css/style-main-page-header.css">
+    <link rel="stylesheet" href="../css/style-Main-Content.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -56,11 +61,9 @@
                             <input id="main-search-input" type="search" placeholder="Pesquisar">
                             <div class="search-tools">
                                 <div id="digital-keyboard" class="digital-keyboard-icon">
-                                    <img height="24" width="24"
-                                        src="//www.gstatic.com/inputtools/images/tia.png">
+                                    <img height="24" width="24" src="//www.gstatic.com/inputtools/images/tia.png">
                                 </div>
-                                <div id="remove-all-search" class="remove-all-search"
-                                    style="fill: currentcolor; filter: invert(100%);">
+                                <div id="remove-all-search" class="remove-all-search" style="fill: currentcolor;">
                                     <svg enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"
                                         style="display: block;">
                                         <path
@@ -141,7 +144,6 @@
         </div>
     </div>
 
-    </div>
     <div class="main-body-frame" style="display: flex;position: relative ;top: 54px;">
         <aside id="aside-element">
             <div id="app-guide">
@@ -318,53 +320,134 @@
             </div>
         </aside>
         <main>
-            <div id="scroll-view-bar">
-                <!-- Seta para a esquerda -->
-                <div class="left-arrow-box" style="display: none;">
-                    <div id="left-arrow-button">
-                        <div class="arrow" style="width: 40px; height: 40px">
-                            <div style="width: 24px; height: 24px; fill: currentcolor;">
-                                <svg height="24" viewBox="0 0 24 24" width="24" focusable="false"
-                                    style="pointer-events: none; display: block; width: 100%; height: 100%;">
-                                    <path d="M14.96 18.96 8 12l6.96-6.96.71.71L9.41 12l6.25 6.25-.7.71z"></path>
-                                </svg>
+            <div id="main-content-viewer">
+                <div id="scroll-view-bar">
+                    <!-- Seta para a esquerda -->
+                    <div class="left-arrow-box" style="display: none;">
+                        <div id="left-arrow-button">
+                            <div class="arrow" style="width: 40px; height: 40px">
+                                <div style="width: 24px; height: 24px; fill: currentcolor;">
+                                    <svg height="24" viewBox="0 0 24 24" width="24" focusable="false"
+                                        style="pointer-events: none; display: block; width: 100%; height: 100%;">
+                                        <path d="M14.96 18.96 8 12l6.96-6.96.71.71L9.41 12l6.25 6.25-.7.71z"></path>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Barra paginada -->
-                <div class="mid-view-bar">
-                    <div id="scroll-view-bar-items">
+                    <!-- Barra paginada -->
+                    <div class="mid-view-bar">
+                        <div id="scroll-view-bar-items">
 
+                        </div>
                     </div>
-                </div>
-                <!-- Seta para direita -->
-                <div class="right-arrow-box">
-                    <div id="right-arrow-button">
-                        <div class="arrow" style="width: 40px; height: 40px">
-                            <div style="width: 24px; height: 24px; fill: currentcolor;">
-                                <svg height="24" viewBox="0 0 24 24" width="24" focusable="false"
-                                    style="pointer-events: none; display: block; width: 100%; height: 100%;">
-                                    <path d="m9.4 18.4-.7-.7 5.6-5.6-5.7-5.7.7-.7 6.4 6.4-6.3 6.3z"></path>
-                                </svg>
+                    <!-- Seta para direita -->
+                    <div class="right-arrow-box">
+                        <div id="right-arrow-button">
+                            <div class="arrow" style="width: 40px; height: 40px">
+                                <div style="width: 24px; height: 24px; fill: currentcolor;">
+                                    <svg height="24" viewBox="0 0 24 24" width="24" focusable="false"
+                                        style="pointer-events: none; display: block; width: 100%; height: 100%;">
+                                        <path d="m9.4 18.4-.7-.7 5.6-5.6-5.7-5.7.7-.7 6.4 6.4-6.3 6.3z"></path>
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- Inicio do gerado -->
+                <div id="first-content-row" class="main-content-viewer">
+                </div>
+
+                <hr class="hr-divisoria">
+
+                <div class="shorts-indicator">
+                    <div style="width:24px ;height:24px"><svg width="24px" height="24px" viewBox="0 0 24 24">
+                            <g>
+                                <path
+                                    d="M17.77,10.32l-1.2-.5L18,9.06a3.74,3.74,0,0,0-3.5-6.62L6,6.94a3.74,3.74,0,0,0,.23,6.74l1.2.49L6,14.93a3.75,3.75,0,0,0,3.5,6.63l8.5-4.5a3.74,3.74,0,0,0-.23-6.74Z"
+                                    fill="red"></path>
+                                <polygon points="10 14.65 15 12 10 9.35 10 14.65" fill="#fff"></polygon>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <h3>Shorts</h3>
+
+                    <div class="close-bnt">
+                        <div class="bnt">
+                            <svg enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"
+                                style="display: block; width: 24px; height: 24px;">
+                                <path
+                                    d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div id="first-shorts-content-row" class="main-shorts-viewer">
+                </div>
+                <div class="mostrar-mais-bnt" title="Mostrar mais">
+                    <div style="width: 24px ;height: 24px ;fill: currentcolor;">
+                        <svg height="24" viewBox="0 0 24 24" width="24"
+                            style="display: block; width: 100%; height: 100%;">
+                            <path d="m18 9.28-6.35 6.35-6.37-6.35.72-.71 5.64 5.65 5.65-5.65z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <hr class="hr-divisoria">
+                <div id="second-content-row" class="main-content-viewer">
+                </div>
+
+                <hr class="hr-divisoria">
+                <div class="shorts-indicator">
+                    <div style="width:24px ;height:24px"><svg width="24px" height="24px" viewBox="0 0 24 24">
+                            <g>
+                                <path
+                                    d="M17.77,10.32l-1.2-.5L18,9.06a3.74,3.74,0,0,0-3.5-6.62L6,6.94a3.74,3.74,0,0,0,.23,6.74l1.2.49L6,14.93a3.75,3.75,0,0,0,3.5,6.63l8.5-4.5a3.74,3.74,0,0,0-.23-6.74Z"
+                                    fill="red"></path>
+                                <polygon points="10 14.65 15 12 10 9.35 10 14.65" fill="#fff"></polygon>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <h3>Shorts</h3>
+
+                    <div class="close-bnt">
+                        <div class="bnt" title="Não tenho interesse">
+                            <svg enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px"
+                                style="display: block; width: 24px; height: 24px;">
+                                <path
+                                    d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div id="second-shorts-content-row" class="main-shorts-viewer">
+                </div>
+                <div class="mostrar-mais-bnt" title="Mostrar mais">
+                    <div style="width: 24px ;height: 24px ;fill: currentcolor;">
+                        <svg height="24" viewBox="0 0 24 24" width="24"
+                            style="display: block; width: 100%; height: 100%;">
+                            <path d="m18 9.28-6.35 6.35-6.37-6.35.72-.71 5.64 5.65 5.65-5.65z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <hr class="hr-divisoria">
+                <div id="last-content-row" class="main-content-viewer">
                 </div>
             </div>
         </main>
     </div>
-    <script src="../javascript/script.js"></script>
-    <script src="../javascript/scriptInscricoes.js"></script>
-    <script src="../javascript/scriptSugestions.js"></script>
-    <script src="../javascript/scriptDrower.js"></script>
+    <script src="./javascript/scriptNames.js"></script>
+    <script src="./javascript/script.js"></script>
+    <script src="./javascript/scriptInscricoes.js"></script>
+    <script src="./javascript/scriptSugestions.js"></script>
+    <script src="./javascript/scriptDrower.js"></script>
+    <script src="./javascript/scriptFrontPage.js"></script>
 </body>
 
 </html>
-
-<!-- <div style="display: block;position: relative; max-width: 100%; width: 100%; background-color: aliceblue;"
-    class="over-scroll-bar">
-
-
-</div>
- -->

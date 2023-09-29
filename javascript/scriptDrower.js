@@ -2,6 +2,8 @@ let mainMenuButton = document.getElementById("guide-bar-button")
 let mainMenu = document.getElementById("app-guide")
 let miniMenu = document.getElementById("mini-app-guide")
 
+let mainContentViewer = document.getElementById("main-content-viewer")
+
 let suspendedMenu = document.getElementById("app-suspended-guide")
 let modalBackgroundFade = document.getElementById("modal-background-fade")
 
@@ -10,7 +12,7 @@ let aside = document.getElementById("aside-element")
 function hideMainMenu() {
     mainMenu.style.display = "none"
     miniMenu.style.display = "flex"
-    aside.style.minWidth = "72px"
+    mainContentViewer.style.marginLeft = "72px"
     aside.style.padding = "6px 4px"
     leftArrow.parentElement.style.left = "96px"
 }
@@ -19,6 +21,8 @@ function hideSuspendedMenu() {
     suspendedMenu.style.left = "-240px"
     suspendedMenu.style.right = ""
 
+    document.body.style.overflow = "scroll"
+
     modalBackgroundFade.style.pointerEvents = "none"
     modalBackgroundFade.style.opacity = "0"
 }
@@ -26,6 +30,8 @@ function hideSuspendedMenu() {
 function showSuspendedMenu() {
     suspendedMenu.style.left = "0px"
     suspendedMenu.style.right = ""
+
+    document.body.style.overflow = "hidden"
 
     modalBackgroundFade.style.pointerEvents = "auto"
     modalBackgroundFade.style.opacity = "0.5"
@@ -38,7 +44,7 @@ function showMainMenu() {
 
     mainMenu.style.display = "flex"
     miniMenu.style.display = "none"
-    aside.style.minWidth = "240px"
+    mainContentViewer.style.marginLeft = "240px"
     aside.style.padding = "14px 12px 0 12px"
     leftArrow.parentElement.style.left = "264px"
 }
@@ -46,7 +52,7 @@ function showMainMenu() {
 function hideAllAside() {
     mainMenu.style.display = "none"
     miniMenu.style.display = "none"
-    aside.style.minWidth = "0"
+    mainContentViewer.style.marginLeft = "0"
     aside.style.padding = "0"
     leftArrow.parentElement.style.left = "24px"
 }
@@ -72,6 +78,7 @@ mainMenuButton.addEventListener("click", function () {
     } else {
         hideMainMenu()
     }
+    firstContentRow.style.gridTemplateColumns = `repeat(${(sizeX / offsetSizeX).toFixed(0)}, ${1}fr)`
 })
 
 document.getElementById("suspended-guide-bar-button").addEventListener("click", function () {

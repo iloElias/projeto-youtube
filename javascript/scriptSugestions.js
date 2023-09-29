@@ -26,31 +26,37 @@ for (let i in sujestionList) {
     scrollView.appendChild(scrollItem)
 }
 
-let maxPos = document.querySelector("main").offsetWidth - scrollView.offsetWidth
-console.log(document.querySelector("main").offsetWidth)
-let minPos = 0
+let maxPos = -document.querySelector("main").offsetWidth //+ scrollView.offsetWidth
 
 let xPos = 0
 
-scrollView.style.left = `${(xPos)}px`
-
-
-rightArrow.addEventListener("click", function () {
-    console.log(-xPos, maxPos)
-    if (-xPos > 0) {
-        leftArrow.parentElement.style.display = "flex"
-    }
-    if ((-xPos) >= (maxPos)) {
-        xPos -= 350
-        scrollView.style.left = `${(xPos)}px`
-    } else {
-        scrollView.style.left = `${(maxPos)}px`
-    }
-    console.log(xPos, -maxPos)
-
-})
+scrollView.style.left = `${xPos}px`
 
 leftArrow.addEventListener("click", function () {
     xPos += 350
-    scrollView.style.left = `${(xPos)}px`
+    if (xPos >= 0) {
+        scrollView.style.left = `${xPos}px`
+
+        leftArrow.parentElement.style.display = "none"
+        rightArrow.parentElement.style.display = "flex"
+    } else {
+        scrollView.style.left = `${xPos}px`
+
+        leftArrow.parentElement.style.display = "flex"
+        rightArrow.parentElement.style.display = "flex"
+    }
+})
+
+rightArrow.addEventListener("click", function () {
+    xPos -= 350
+    if (xPos >= maxPos) {
+        scrollView.style.left = `${xPos}px`
+
+        leftArrow.parentElement.style.display = "flex"
+    } else {
+        scrollView.style.left = `${xPos - 16}px`
+
+        leftArrow.parentElement.style.display = "flex"
+        rightArrow.parentElement.style.display = "none"
+    }
 })

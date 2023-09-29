@@ -1,21 +1,23 @@
 aside {
     display: flex;
-    min-width: 240px;
 
     padding: 14px 12px 12px 12px;
     padding-top: 14px;
     padding-bottom: 0;
+
+    position: fixed;
+    z-index: 4;
+
+    background-color: var(--background-color);
 }
 
 #app-guide {
     overflow: hidden;
-    overflow-x: hidden;
     scrollbar-width: thin;
 }
 
 #app-guide:hover {
     overflow: auto;
-    overflow-x: hidden;
 }
 
 #app-guide::-webkit-scrollbar-thumb {
@@ -27,6 +29,7 @@ aside {
 }
 
 #app-guide::-webkit-scrollbar {
+
     background: transparent;
     width: 16px;
     display: block;
@@ -152,7 +155,14 @@ aside {
 #app-suspended-guide {
     display: flex;
     flex-direction: column;
+
+    position: fixed;
+    background-color: var(--background-color);
+    z-index: 15;
+
     height: 100%;
+    min-width: 240px;
+    transition: 0.25s;
 }
 
 #app-suspended-guide .guide-container {
@@ -189,18 +199,10 @@ aside {
     background-color: #000000;
     height: 100%;
     width: 100%;
-    position: absolute;
+    position: fixed;
+
     z-index: 10;
     transition: 0.25s;
 
     pointer-events: none;
-}
-
-#app-suspended-guide {
-    display: flex;
-    position: absolute;
-    z-index: 15;
-    background-color: #0f0f0f;
-    min-width: 240px;
-    transition: 0.25s;
 }

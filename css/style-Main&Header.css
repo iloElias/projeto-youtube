@@ -29,8 +29,30 @@
     font-family: Roboto, Arial, sans-serif;
 }
 
+.weak,
+.weak * {
+    font-weight: 500;
+    color: #aaa;
+}
+
 body {
     background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 56px;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: #ffffff;
+}
+
+body::-webkit-scrollbar {
+    background: transparent;
+    background-color: #ffffff;
+    width: 0;
+    display: block;
 }
 
 body::-webkit-scrollbar-thumb {
@@ -57,7 +79,10 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    position: absolute;
+    position: fixed;
+    z-index: 4;
+
+    background-color: var(--background-color);
 }
 
 /* Header esquerda */
